@@ -1,12 +1,8 @@
 package  com.example.okfruitapp.ui.login;
 
 import android.app.Activity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -18,10 +14,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.okfruitapp.R;
-import com.example.okfruitapp.ui.login.LoginViewModel;
-import com.example.okfruitapp.ui.login.LoginViewModelFactory;
 import com.example.okfruitapp.databinding.ActivityLoginBinding;
+import com.example.okfruitapp.homepage.HomePageActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -124,8 +125,13 @@ private ActivityLoginBinding binding;
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        redirectToHomePage();
     }
 
+    private void redirectToHomePage() {
+        Intent intent = new Intent(this, HomePageActivity.class);
+        startActivity(intent);
+    }
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
