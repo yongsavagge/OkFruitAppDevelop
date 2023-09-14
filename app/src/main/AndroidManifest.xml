@@ -26,10 +26,15 @@
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
+
         <activity
             android:name=".homepage.HomePageActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
+        <activity
+            android:name=".resultado.ResultadoActivity"
+            android:exported="false"
+            android:label="HomePageActivity" />
     </application>
 
 </manifest>
