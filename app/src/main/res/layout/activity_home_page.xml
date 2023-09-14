@@ -9,13 +9,21 @@
     <TextView
         android:layout_width="370dp"
         android:layout_height="103dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginTop="28dp"
         android:text="Ventana Home"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="34sp"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tomat Foto"
+        tools:layout_editor_absoluteX="122dp"
+        tools:layout_editor_absoluteY="219dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
