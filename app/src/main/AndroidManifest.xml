@@ -35,6 +35,12 @@
             android:name=".resultado.ResultadoActivity"
             android:exported="false"
             android:label="HomePageActivity" />
+
+        <activity
+            android:name=".actualizar.ActualizarDatoActivity"
+            android:exported="false"
+            android:label="HomePageActivity" />
+
     </application>
 
 </manifest>
