@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/okfruitapp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="15dp"
@@ -56,30 +56,29 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="192dp"
+        android:background="#A99F9F9F"
         android:ems="10"
+        android:gravity="center"
+        android:hint="CONTRASEÑA"
         android:inputType="textPersonName"
         android:text=""
-        android:hint="CONTRASEÑA"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:background="#A99F9F9F"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/IrMuestra"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -90,8 +89,7 @@
         android:background="@drawable/button_go"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/Regresar"
@@ -104,6 +102,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

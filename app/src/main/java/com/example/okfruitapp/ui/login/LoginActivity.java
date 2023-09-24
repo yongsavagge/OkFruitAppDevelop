@@ -34,9 +34,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Inflar el diseño de la actividad
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-
-        // INTERFAZ
+        // Buscar el ImageButton después de inflar el diseño
         ImageButton BotonRegresar = findViewById(R.id.Regresar);
 
         BotonRegresar.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-     binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
      setContentView(binding.getRoot());
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
