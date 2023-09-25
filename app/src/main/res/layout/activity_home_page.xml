@@ -13,9 +13,11 @@
         android:layout_height="match_parent"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/arandanos"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteY="206dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -96,6 +98,22 @@
         app:layout_constraintVertical_bias="0.021"
         app:srcCompat="@android:drawable/ic_menu_manage"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_dato"
+        android:layout_width="62dp"
+        android:layout_height="56dp"
+        android:background="@color/material_dynamic_primary40"
+        android:backgroundTint="#3F51B5"
+        android:text="+"
+        android:textColorHighlight="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.031"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
