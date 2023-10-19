@@ -14,6 +14,8 @@ import com.example.okfruitapp.resultado.ResultadoActivity;
 
 public class HomePageActivity extends AppCompatActivity {
 
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_PICK = 2;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
@@ -45,8 +47,10 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Abre la cámara
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivity(intent);
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
             }
         });
 
@@ -54,10 +58,11 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Abre la galería
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivity(intent);
+                Intent pickImageIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickImageIntent, REQUEST_IMAGE_PICK);
             }
         });
+
         floatActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
