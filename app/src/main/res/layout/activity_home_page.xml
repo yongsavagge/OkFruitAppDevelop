@@ -103,7 +103,6 @@
         android:id="@+id/btn_dato"
         android:layout_width="62dp"
         android:layout_height="56dp"
-        android:background="@color/material_dynamic_primary40"
         android:backgroundTint="#3F51B5"
         android:text="+"
         android:textColorHighlight="#00FFFFFF"

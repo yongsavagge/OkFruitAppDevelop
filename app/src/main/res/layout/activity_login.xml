@@ -6,44 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.login.LoginActivity">
 
 
     <ImageView
         android:id="@+id/backgroundImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="418dp"
+        android:layout_height="737dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ac" />
+        app:srcCompat="@drawable/fondo" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="297dp"
-        android:layout_height="330dp"
+        android:layout_width="287dp"
+        android:layout_height="294dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.416"
         app:srcCompat="@drawable/okfruitapp" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="323dp"
         android:layout_height="55dp"
-        android:layout_marginTop="407dp"
+        android:layout_marginTop="372dp"
         android:background="#A99F9F9F"
         android:gravity="center"
         android:hint="@string/prompt_usuario"
@@ -78,19 +74,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.485" />
+        app:layout_constraintVertical_bias="0.313" />
+
 
     <Button
         android:id="@+id/login"
-        android:layout_width="323dp"
+        android:layout_width="174dp"
         android:layout_height="55dp"
-        android:layout_gravity="start"
-        android:layout_marginBottom="64dp"
-        android:enabled="false"
-        android:text="@string/action_sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:backgroundTint="#4CAF50"
+        android:text="Iniciar Sesion"
+        android:textColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImageView"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImageView"
+        app:layout_constraintStart_toStartOf="@+id/backgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/btn_Register"
+        android:layout_width="151dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#2196F3"
+        android:text="Registro"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImageView"
+        app:layout_constraintEnd_toEndOf="@+id/backgroundImageView"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -105,5 +119,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315" />
+
+
+    >
 
 </androidx.constraintlayout.widget.ConstraintLayout>
