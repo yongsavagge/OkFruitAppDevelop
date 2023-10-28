@@ -1,4 +1,4 @@
-package  com.example.okfruitapp.ui.login;
+package com.example.okfruitapp.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,10 +21,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.okfruitapp.Module.Usuario;
+import com.example.okfruitapp.R;
 import com.example.okfruitapp.databinding.ActivityLoginBinding;
+import com.example.okfruitapp.endpoints.UserService;
 import com.example.okfruitapp.homepage.HomePageActivity;
-import com.example.okfruitapp.interFaces.UsuarioAPI;
+import com.example.okfruitapp.models.LoginUser;
+import com.example.okfruitapp.models.UserModel;
+import com.example.okfruitapp.resultado.ResultadoActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,141 +37,86 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private LoginViewModel loginViewModel;
-    private ActivityLoginBinding binding;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+
+
+        com.example.okfruitapp.databinding.ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
 
-         EditText usernameEditText = binding.username;
-         EditText passwordEditText = binding.password;
-         Button loginButton = binding.login;
-         ProgressBar loadingProgressBar = binding.loading;
-
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
-            @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                loginButton.setEnabled(loginFormState.isDataValid());
-                if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
-            }
-        });
-
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                setResult(Activity.RESULT_OK);
-//
-                //Complete and destroy login activity once successful
-                finish();
-            }
-        });
-
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-            }
-        };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
+        final EditText usernameEditText = binding.username;
+        final EditText passwordEditText = binding.password;
+        final Button loginButton = binding.login;
+        final ProgressBar loadingProgressBar = binding.loading;
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //loadingProgressBar.setVisibility(View.VISIBLE);
-                //loginViewModel.login(usernameEditText.getText().toString(),
-                //        passwordEditText.getText().toString());
+                validaLogin(usernameEditText.getText().toString(),passwordEditText.getText().toString());
+            }
+        });
 
-                // Se activa la funcion para enviar los datos de usuario y contraseña
-                find(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+        Button btnGoToRegistration = findViewById(R.id.btn_Register);
+
+        btnGoToRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.d("LoginActivity", "Botón 'Ir a Registro' hizo clic");
+
+                // Crear un Intent para abrir la actividad UserRegistrationActivity
+
+                Intent intent = new Intent(LoginActivity.this, UserRegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+    private void validaLogin(String name, String password) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.5:5000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        UserService UserService = retrofit.create(UserService.class);
+        LoginUser modal = new LoginUser(name, password);
+        Call<LoginUser> call= UserService.enviaCredenciales(modal);
+        call.enqueue(new Callback<LoginUser>() {
+            @Override
+            public void onResponse(Call<LoginUser> call, Response<LoginUser> response) {
+
+                if(response.isSuccessful()){
+                    LoginUser loginNice = response.body();
+                    if(loginNice.getNombre() != "" &&  loginNice.getContrasena() != ""){
+                        updateUiWithUser(loginNice.getNombre());
+                    }else{
+                        Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrecta!!", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(),"Error con la conexion: "+response.errorBody(), Toast.LENGTH_LONG).show();
+                    Log.d("TAG","Error: "+response.message());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<LoginUser> call, Throwable t) {
+                Log.d("TAG", "onFailure: "+t.getMessage()) ;
+                Toast.makeText(getApplicationContext(),t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    // *********** Funcion que activa la API y hace la peticion de las credenciales del Login
-    private void find(String usernameEditText, String passwordEditText){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.94.98:5000")// IP de la API
-                .addConverterFactory(GsonConverterFactory.create()).build();
-        UsuarioAPI usuarioAPI = retrofit.create(UsuarioAPI.class);
-        Call<Usuario> call = usuarioAPI.find(usernameEditText,passwordEditText);
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                try {
-                    // Se ingresa aca Siempre y cuando la peticion sea correcta
-                    if(response.isSuccessful()) {
-                        Usuario usuarios = response.body();
-
-                        //Deberia retornar a este modulo si la conexion y el logeo es exitoso
-                        //if(exito == ture){
-                        //updateUiWithUser(NameUser);
-                        //}else{
-                        // Mensaje en caso de no ser exitoso
-                        // showLoginFailed();
-                        // }
-                    }
-                    //Envia informacion sobre errores
-                }catch (Exception ex){
-                    Toast.makeText(LoginActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                String errorMessage = t.getMessage();
-                // Se envia informacion frente a la conexion de la API
-                Log.e("Retrofit Error", errorMessage); // Imprime el mensaje de error en los logs de depuración
-                Toast.makeText(LoginActivity.this, "Error de conexión: " + errorMessage, Toast.LENGTH_SHORT).show();
-            }
-        });
-    };
-
-    private void updateUiWithUser(String Usuario) {
-        String welcome = "Bienvenido " + Usuario;
-        // TODO : initiate successful logged in experience
+    private void updateUiWithUser(String nombre) {
+        String welcome = "Bienvenido " + nombre+"!!";
+        // TODO: initiate a successful logged-in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         redirectToHomePage();
     }
@@ -177,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomePageActivity.class);
         startActivity(intent);
     }
+
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
