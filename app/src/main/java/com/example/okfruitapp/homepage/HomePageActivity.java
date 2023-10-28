@@ -12,7 +12,7 @@ import com.example.okfruitapp.R;
 import com.example.okfruitapp.actualizar.ActualizarDatoActivity;
 import com.example.okfruitapp.resultado.ResultadoActivity;
 
-public class HomePageActivity extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity  {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_PICK = 2;

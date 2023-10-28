@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         Call<LoginUser> call= UserService.enviaCredenciales(modal);
         call.enqueue(new Callback<LoginUser>() {
             @Override
-            public void onResponse(Call<LoginUser> call, Response<LoginUser> response) {
+            public void onResponse(Call<LoginUser> call, Response<LoginUser> response)  {
 
                 if(response.isSuccessful()){
                     LoginUser loginNice = response.body();

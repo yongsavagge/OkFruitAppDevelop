@@ -1,6 +1,6 @@
 package com.example.okfruitapp.models;
 
-public class LoginUser {
+public class LoginUser  {
     String nombre;
     String contrasena;
     public String getNombre() {

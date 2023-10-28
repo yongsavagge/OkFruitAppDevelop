@@ -1,6 +1,6 @@
 package com.example.okfruitapp.models;
 
-public class UserModel {
+public class UserModel  {
     // string variables for our name and job
     private String email;
     private String password;

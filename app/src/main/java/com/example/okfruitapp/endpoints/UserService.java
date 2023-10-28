@@ -6,7 +6,7 @@ import com.example.okfruitapp.models.LoginUser;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-public interface UserService {
+public interface UserService  {
     @POST("/add-usuario")
     Call<UserModel> sendUserData(@Body UserModel userModel  ) ;
 
