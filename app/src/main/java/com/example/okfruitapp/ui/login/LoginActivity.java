@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(usernameEditText.getText().toString().isEmpty() || passwordEditText.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Llena los campos!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Campos vacios!!", Toast.LENGTH_LONG).show();
                 }else {
                     validaLogin(usernameEditText.getText().toString(),passwordEditText.getText().toString());
                 }
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(loginNice.getNombre() != "" &&  loginNice.getContrasena() != ""){
                         updateUiWithUser(loginNice.getNombre());
                     }else{
-                        Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrecta!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Nit o clave incorrecta!!", Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),"Error con la conexion: "+response.errorBody(), Toast.LENGTH_LONG).show();
