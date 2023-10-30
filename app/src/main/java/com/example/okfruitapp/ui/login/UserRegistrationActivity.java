@@ -39,6 +39,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         responseTV = findViewById(R.id.idTVResponse);
 
         Button enviarDatos = findViewById(R.id.Registrar);
+        Button volverAtras = findViewById(R.id.volverAtras);
 
         // adding on click listener to our button.
         enviarDatos.setOnClickListener(new View.OnClickListener() {
@@ -54,12 +55,18 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 Log.d("UserRegistrationActivity", "Email: " + email);
 
                 // validating if the text field is empty or not.
-                if (email.toString().isEmpty() && password.toString().isEmpty()) {
-                    Toast.makeText(UserRegistrationActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
+                if (email.toString().isEmpty() || password.toString().isEmpty()) {
+                    Toast.makeText(UserRegistrationActivity.this, "Ingresa los datos!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // calling a method to post the data and passing our name and job.
                 postData(email, password);
+            }
+        });
+        volverAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }
@@ -73,7 +80,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.5:5000/")
+                .baseUrl("http://192.168.1.7:5000/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
@@ -95,7 +102,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                 // this method is called when we get response from our api.
-                Toast.makeText(UserRegistrationActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRegistrationActivity.this, "Registrado con exito!!", Toast.LENGTH_SHORT).show();
 
                 // below line is for hiding our progress bar.
                 loadingPB.setVisibility(View.GONE);

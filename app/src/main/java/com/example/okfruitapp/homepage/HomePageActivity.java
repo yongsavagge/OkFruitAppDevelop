@@ -1,6 +1,8 @@
 package com.example.okfruitapp.homepage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.okfruitapp.R;
 import com.example.okfruitapp.actualizar.ActualizarDatoActivity;
 import com.example.okfruitapp.resultado.ResultadoActivity;
+import com.example.okfruitapp.viewsImage.ViewImage;
 
 public class HomePageActivity extends AppCompatActivity  {
 
@@ -33,15 +36,6 @@ public class HomePageActivity extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
-//
-        //btnFotoTomar.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        // Crea un Intent para redireccionar a la otra actividad
-        //        Intent intent = new Intent(HomePageActivity.this, ResultadoActivity.class);
-        //        startActivity(intent);
-        //    }
-        //});
 
         btnFotoSubir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +43,7 @@ public class HomePageActivity extends AppCompatActivity  {
                 // Abre la cámara
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                    startActivityForResult(takePictureIntent, 1);
                 }
             }
         });
@@ -71,5 +65,15 @@ public class HomePageActivity extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
+        }
+
+        protected void onActivityResult(int requestCode, int resultCode, Intent data){
+            super.onActivityResult(requestCode, resultCode,data);
+            if(requestCode == 1 && resultCode == RESULT_OK){
+                Bundle extras = data.getExtras();
+                Bitmap imgBitmap = (Bitmap) extras.get("data");
+                Intent intent = new Intent(HomePageActivity.this, ViewImage.class);
+                startActivity(intent);
+            }
         }
 }
