@@ -117,11 +117,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
                 // on below line we are getting our data from modal class and adding it to our string.
 
-                String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getEmail() + "\n" + "Job : " + responseFromAPI.getPassword();
+                //String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getEmail() + "\n" + "Job : " + responseFromAPI.getPassword();
 
                 // below line we are setting our
                 // string to our text view.
-                responseTV.setText(responseString);
+                //responseTV.setText(responseString);
             }
 
             @Override

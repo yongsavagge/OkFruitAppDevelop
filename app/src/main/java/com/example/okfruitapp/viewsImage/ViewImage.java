@@ -1,7 +1,9 @@
 package com.example.okfruitapp.viewsImage;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -13,6 +15,7 @@ public class ViewImage extends AppCompatActivity {
 
     Button btnEnvia;
     ImageView imageView;
+    Button volverAtras;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -22,5 +25,18 @@ public class ViewImage extends AppCompatActivity {
 
         btnEnvia = findViewById(R.id.btnEnvia);
         imageView = findViewById(R.id.imageTEC);
+        volverAtras = findViewById(R.id.volverAtras);
+        Bitmap bitmap = getIntent().getParcelableExtra("bitmapImage");
+
+        imageView.setImageBitmap(bitmap);
+
+        volverAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
+
+
 }
