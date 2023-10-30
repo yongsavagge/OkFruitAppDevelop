@@ -56,7 +56,11 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validaLogin(usernameEditText.getText().toString(),passwordEditText.getText().toString());
+                if(usernameEditText.getText().toString().isEmpty() || passwordEditText.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Llena los campos!!", Toast.LENGTH_LONG).show();
+                }else {
+                    validaLogin(usernameEditText.getText().toString(),passwordEditText.getText().toString());
+                }
             }
         });
 
@@ -81,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validaLogin(String name, String password) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.5:5000/")
+                .baseUrl("http://192.168.1.7:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UserService UserService = retrofit.create(UserService.class);
