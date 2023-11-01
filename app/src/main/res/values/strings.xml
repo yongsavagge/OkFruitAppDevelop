@@ -11,5 +11,5 @@
     <string name="login_failed">"Login failed"</string>
     <string name="boton_iniciar_sesion">Iniciar Sesión</string>
     <string name="prompt_email">string</string>
-
+    <string name="btnEnviar">Enviar imagen</string>
 </resources>
