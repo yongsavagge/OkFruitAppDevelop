@@ -12,35 +12,34 @@
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/registro"
-        tools:layout_editor_absoluteY="206dp" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/btnEnvia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="583dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="96dp"
         android:backgroundTint="#4CAF50"
         android:text="@string/btnEnviar"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageTEC"
-        android:layout_width="323dp"
-        android:layout_height="504dp"
+        android:layout_width="291dp"
+        android:layout_height="418dp"
         app:layout_constraintBottom_toTopOf="@+id/btnEnvia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -55,6 +54,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEnvia"
         tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/tipoFruta"
+        style="@style/CustomSpinnerStyle"
+        android:layout_width="183dp"
+        android:layout_height="39dp"
+        android:contextClickable="false"
+        android:entries="@array/tiposFrutas"
+        android:textAlignment="center"
+        android:textColor="@color/spinner_text_color_selector"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnvia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageTEC" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
