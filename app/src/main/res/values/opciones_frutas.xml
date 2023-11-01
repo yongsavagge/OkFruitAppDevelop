@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tiposFrutas">
+        <item>--- Selecciona ---</item>
+        <item>Arandanos</item>
+        <item>Cerezas</item>
+    </string-array>
+</resources>
