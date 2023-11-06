@@ -1,12 +1,11 @@
 package com.example.okfruitapp.homepage;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +18,13 @@ import com.example.okfruitapp.actualizar.ActualizarDatoActivity;
 import com.example.okfruitapp.resultado.ResultadoActivity;
 import com.example.okfruitapp.viewsImage.ViewImage;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class HomePageActivity extends AppCompatActivity  {
 
@@ -90,45 +93,57 @@ public class HomePageActivity extends AppCompatActivity  {
                     startActivity(intent);
                 } else if (requestCode == REQUEST_IMAGE_FROM_GALLERY) {
                     Uri selectedImage = data.getData();
-                    try {
-                        Bitmap imgBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                        // Guarda el bitmap en la memoria externa
-                        String path = saveImageToExternalStorage(imgBitmap);
-                        // Enviar la ruta de la imagen a la otra actividad
-                        Intent intent = new Intent(HomePageActivity.this, ViewImage.class);
-                        intent.putExtra("bitmapImage", path); // Agregar la ruta de la imagen como extra al intent
-                        startActivity(intent);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String imageUriString = selectedImage.toString(); // Convertir Uri a String
+                    Intent intent = new Intent(HomePageActivity.this, ViewImage.class);
+                    intent.putExtra("imageUri", imageUriString); // Pasar la Uri como un String en el intent
+                    startActivity(intent);
                 }
             }
 
         }
-    private String saveImageToExternalStorage(Bitmap bitmap) {
-        String imagePath = null;
+    private MultipartBody.Part convertBitmapToMultipart(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // Cambia a JPEG
+        byte[] byteArray = stream.toByteArray();
+
+        // Comprueba el tipo de imagen
+        String imageType = "image/png";
+
+        RequestBody requestFile = RequestBody.create(MediaType.parse(imageType), byteArray);
+        return MultipartBody.Part.createFormData("imagen", "image.png", requestFile); // Cambia el nombre del archivo si es necesario
+    }
+
+    private MultipartBody.Part convertUriToMultipart(Uri uri) {
         try {
-            File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "YourDirectoryName");
+            InputStream inputStream = getContentResolver().openInputStream(uri);
+            if (inputStream != null) {
+                byte[] fileBytes = getBytes(inputStream);
 
-            if (!storageDir.exists()) {
-                storageDir.mkdirs();
+                RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), fileBytes);
+                return MultipartBody.Part.createFormData("imagen", "image.png", requestFile);
+            } else {
+                // Maneja el caso en el que no se pudo abrir el flujo de entrada desde la Uri
+                return null;
             }
-
-            File imageFile = new File(storageDir, "Image_" + System.currentTimeMillis() + ".jpg");
-
-            FileOutputStream out = new FileOutputStream(imageFile);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
-
-            imagePath = imageFile.getAbsolutePath();
-
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    private byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
         }
 
-        return imagePath;
+        return byteBuffer.toByteArray();
     }
+
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
