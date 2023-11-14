@@ -48,6 +48,39 @@
             android:exported="false"
             android:label="HomePageActivity" />
 
+        <!--  inicio  de las vistas de huerto y campo-->
+        <activity
+            android:name=".campo.campoActivity"
+            android:exported="false"
+            android:label="ActualizarDatoActivity" />
+
+        <activity
+            android:name=".campo.agregarCampoActivity"
+            android:exported="false"
+            android:label="campoActivity" />
+
+        <activity
+            android:name=".campo.actualizarCampoActivity"
+            android:exported="false"
+            android:label="campoActivity" />
+
+        <activity
+            android:name=".huerto.huertoActivity"
+            android:exported="false"
+            android:label="ActualizarDatoActivity" />
+
+        <activity
+            android:name=".huerto.agregarHuertoActivity"
+            android:exported="false"
+            android:label="huertoActivity" />
+
+        <activity
+            android:name=".huerto.actualizarHuertoActivity"
+            android:exported="false"
+            android:label="huertoActivity" />
+
+        <!--  fin de las vistas de huerto y campo-->
+
         <activity
             android:name=".viewsImage.ViewImage"
             android:exported="false"
@@ -57,6 +90,9 @@
             android:name=".ui.login.UserRegistrationActivity"
             android:exported="false"
             android:label="UserRegistrationActivity" />
+
+
+
 
     </application>
 

@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validaLogin(String name, String password) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.7:5000/")
+                .baseUrl("http://192.168.43.213:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UserService UserService = retrofit.create(UserService.class);
