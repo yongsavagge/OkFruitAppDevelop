@@ -6,42 +6,36 @@
     android:layout_height="match_parent">
 
 
-        <!-- Imagen de fondo -->
-
-    <!-- Contenido encima del fondo -->
-
-
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/backgroundImageViewRegistration"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/registro_"
+        app:srcCompat="@drawable/fondo"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="297dp"
-            android:layout_height="330dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo_fruit" />
-
-
-    <!--text view for displaying our API response-->
+        android:id="@+id/imageView"
+        android:layout_width="287dp"
+        android:layout_height="299dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/correoText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_fruit" />
 
     <EditText
         android:id="@+id/correoText"
         android:layout_width="323dp"
         android:layout_height="55dp"
-        android:background="#A99F9F9F"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/fondo_redondeado"
         android:gravity="center"
-        android:hint="Ingresa tu nit"
+        android:hint="Ingresa tu Rut"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
         android:text=""
@@ -49,19 +43,17 @@
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintTop_toTopOf="@+id/backgroundImageViewRegistration" />
 
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="323dp"
         android:layout_height="55dp"
-        android:background="#A99F9F9F"
+        android:background="@drawable/fondo_redondeado"
         android:gravity="center"
-        android:hint="Ingresa tu clave"
+        android:hint="Ingresa tu contraseña"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
@@ -74,21 +66,21 @@
         app:layout_constraintBottom_toTopOf="@+id/Registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintTop_toBottomOf="@+id/correoText"
+        app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/Registrar"
-        android:layout_width="137dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="185dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="572dp"
         android:backgroundTint="#4CAF50"
         android:text="Registrar"
         android:textColor="@color/white"
         app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backgroundImageViewRegistration"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
@@ -102,7 +94,6 @@
         android:textSize="15sp"
         tools:ignore="MissingConstraints " />
 
-    <!--progress bar for loading -->
     <ProgressBar
         android:id="@+id/idLoadingPB"
         android:layout_width="wrap_content"
@@ -113,8 +104,9 @@
 
     <Button
         android:id="@+id/volverAtras"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="151dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="36dp"
         android:backgroundTint="#ED1D23"
         android:text="Volver"
         android:textColor="@color/white"
@@ -122,7 +114,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Registrar"
-        app:layout_constraintVertical_bias="0.275" />
-
+        app:layout_constraintVertical_bias="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

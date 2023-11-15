@@ -12,4 +12,7 @@
     <string name="boton_iniciar_sesion">Iniciar Sesión</string>
     <string name="prompt_email">string</string>
     <string name="btnEnviar">Enviar imagen</string>
+    <string name="btnAceptar">Aceptar analisis</string>
+    <string name="btnRechazar">Rechazar analisis</string>
+
 </resources>
