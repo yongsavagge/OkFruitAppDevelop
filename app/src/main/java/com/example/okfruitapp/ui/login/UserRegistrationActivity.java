@@ -81,7 +81,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(MyApp.getBaseUrl())
+                .baseUrl("http://192.168.1.7:5000/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
