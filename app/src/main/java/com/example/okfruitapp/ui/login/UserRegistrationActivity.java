@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.okfruitapp.MyApp;
 import com.example.okfruitapp.R;
 import com.example.okfruitapp.endpoints.UserService;
 import com.example.okfruitapp.models.UserModel; // Importar la clase UserModel
@@ -80,7 +81,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.213:5000/")
+                .baseUrl("http://192.168.1.7:5000/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
