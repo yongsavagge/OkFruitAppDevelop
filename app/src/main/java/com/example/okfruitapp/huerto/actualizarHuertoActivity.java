@@ -14,7 +14,7 @@ public class actualizarHuertoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_actualizar_huerto);
-
+        // Prueba
         Button btnCancelar = findViewById(R.id.btn_CancelarCampo);
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
