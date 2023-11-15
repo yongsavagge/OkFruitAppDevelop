@@ -25,7 +25,7 @@
         android:id="@+id/textView3"
         android:layout_width="180dp"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Inicio"
         android:textColor="#000000"
@@ -36,30 +36,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
         tools:ignore="HardcodedText,MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatActualizar"
-        android:layout_width="56dp"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021"
-        app:srcCompat="@android:drawable/ic_menu_manage"
-        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_dato"
@@ -73,21 +49,43 @@
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.031"
+        app:layout_constraintVertical_bias="0.042"
         tools:ignore="HardcodedText,MissingConstraints" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatActualizar"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042"
+        app:srcCompat="@android:drawable/ic_menu_manage"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="188dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="116dp"
         android:background="@drawable/rounded_background"
         android:orientation="horizontal"
         android:padding="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.199">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/iconImageView"
@@ -118,7 +116,7 @@
                 android:layout_height="106dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="#009688"
-                android:text="Camara"
+                android:text="Tomar Foto"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -129,15 +127,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="188dp"
-        android:layout_marginBottom="388dp"
+        android:layout_marginBottom="352dp"
         android:background="@drawable/rounded_background"
         android:orientation="horizontal"
         android:padding="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.199">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/iconImageView2"
@@ -168,13 +165,12 @@
                 android:layout_height="106dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="#009688"
-                android:text="Galeria"
+                android:text="Elegir Foto"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
     </RelativeLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
