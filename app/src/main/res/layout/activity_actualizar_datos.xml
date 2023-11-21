@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.login.LoginActivity">
 
 
     <ImageView
@@ -22,14 +24,13 @@
         android:layout_marginBottom="172dp"
         android:backgroundTint="#F44336"
         android:text="Volver"
-
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_marginBottom="16dp"
-        tools:ignore="MissingConstraints" />
+
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 
     <Button
