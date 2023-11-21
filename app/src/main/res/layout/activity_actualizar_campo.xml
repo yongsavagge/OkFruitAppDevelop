@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
 
 
     <ImageView
@@ -12,65 +13,31 @@
         android:layout_height="match_parent"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="parent"
-
-        app:srcCompat="@drawable/registro"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <Button
-        android:id="@+id/btn_CancelarCampo"
-        android:layout_width="133dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="264dp"
-        android:backgroundTint="#F44336"
-        android:elevation="58dp"
-
-        android:text="CANCELAR"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_marginBottom="16dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnActualizarCampo"
-        android:layout_width="159dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="268dp"
-        android:backgroundTint="#1F7735"
-        android:elevation="58dp"
-
-        android:text="ACTUALIZAR"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.828"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_marginBottom="16dp"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/registro" />
 
     <TextView
         android:id="@+id/textView6"
-        tools:ignore="HardcodedText,MissingConstraints"
         android:layout_width="413dp"
         android:layout_height="113dp"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="44dp"
         android:background="#39C156"
         android:gravity="center|center_vertical"
         android:text="Actualizar Campos"
         android:textColor="#000000"
         android:textSize="44sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nameCampo"
 
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <EditText
         android:id="@+id/nameCampo"
@@ -86,17 +53,19 @@
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/descripcionCampo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.693"
+        app:layout_constraintHorizontal_bias="0.386"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.789" />
 
     <EditText
         android:id="@+id/descripcionCampo"
         android:layout_width="317dp"
         android:layout_height="93dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="#A99F9F9F"
         android:gravity="center"
         android:hint="Descripción..."
@@ -110,13 +79,44 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintEnd_toEndOf="@+id/btnActualizarCampo"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396"
-        app:layout_marginEnd="16dp"
-        app:layout_marginStart="16dp" />
+        app:layout_constraintVertical_bias="0.391" />
+
+    <Button
+        android:id="@+id/btn_CancelarCampo"
+        android:layout_width="133dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="260dp"
+        android:backgroundTint="#F44336"
+        android:elevation="58dp"
+        android:text="CANCELAR"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+
+
+    <Button
+        android:id="@+id/btnActualizarCampo"
+        android:layout_width="159dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="264dp"
+        android:backgroundTint="#1F7735"
+        android:elevation="58dp"
+        android:text="ACTUALIZAR"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintStart_toStartOf="parent"
+         tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

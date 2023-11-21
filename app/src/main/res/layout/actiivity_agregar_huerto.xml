@@ -3,78 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    tools:context=".ui.login.LoginActivity"
     android:layout_height="match_parent">
 
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView3AgregarHuerto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="TODO"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-
         app:srcCompat="@drawable/registro"
-        tools:layout_editor_absoluteY="-33dp" />
-
-    <Button
-        android:id="@+id/btn_CancelarHuerto"
-        android:layout_width="133dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="204dp"
-        android:backgroundTint="#F44336"
-        android:elevation="58dp"
-
-        android:text="CANCELAR"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_marginBottom="16dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnAgregarHuerto"
-        android:layout_width="126dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="212dp"
-        android:backgroundTint="#1F7735"
-        android:elevation="58dp"
-
-        android:text="AGREGAR"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.805"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_marginBottom="16dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
-        android:id="@+id/textView6"
-        tools:ignore="HardcodedText,MissingConstraints"
+        android:id="@+id/textViewAgregarHuerto"
         android:layout_width="413dp"
         android:layout_height="113dp"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="40dp"
         android:background="#39C156"
         android:gravity="center|center_vertical"
         android:text="Ingresar Huerto"
         android:textColor="#000000"
-
         android:textSize="44sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nameHuerto"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-         />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <EditText
-        android:id="@+id/nameCampo"
+        android:id="@+id/nameHuerto"
         android:layout_width="323dp"
         android:layout_height="55dp"
         android:background="#A99F9F9F"
@@ -87,18 +51,20 @@
         android:textColorHint="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.693"
+        app:layout_constraintBottom_toTopOf="@+id/descripcionCampo"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAgregarHuerto"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
-
+        app:layout_constraintVertical_bias="0.824"
+        android:layout_marginStart="56dp" />
 
     <EditText
         android:id="@+id/descripcionCampo"
-        android:layout_width="319dp"
-        android:layout_height="57dp"
+        android:layout_width="323dp"
+        android:layout_height="117dp"
+
+        android:layout_marginStart="76dp"
         android:background="#A99F9F9F"
         android:gravity="center"
         android:hint="Descripción..."
@@ -112,22 +78,51 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.663"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348"
-        app:layout_marginEnd="16dp"
-        app:layout_marginStart="16dp" />
+        app:layout_constraintVertical_bias="0.39"
+        android:layout_marginEnd="16dp" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerCampoHuerto"
         android:layout_width="316dp"
         android:layout_height="52dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="48dp"
         android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_CancelarHuerto"
         app:layout_constraintTop_toBottomOf="@+id/descripcionCampo"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="68dp" />
+        tools:layout_editor_absoluteX="85dp" />
+
+    <Button
+        android:id="@+id/btn_CancelarHuerto"
+        android:layout_width="148dp"
+        android:layout_height="69dp"
+
+        android:layout_marginBottom="140dp"
+        android:backgroundTint="#F44336"
+        android:elevation="58dp"
+        android:text="CANCELAR"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3AgregarHuerto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAgregarHuerto"
+        android:layout_width="137dp"
+        android:layout_height="70dp"
+
+        android:backgroundTint="#1F7735"
+        android:elevation="58dp"
+        android:text="AGREGAR"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3AgregarHuerto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="136dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
